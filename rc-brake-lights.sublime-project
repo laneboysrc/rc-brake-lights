@@ -1,0 +1,32 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+    "build_systems":
+    [
+        {
+            "cmd":
+            [
+                "make"
+            ],
+            "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+            "name": "make all",
+            "syntax": "Packages/Makefile/Make Output.sublime-syntax",
+            "working_dir": "${project_path}/firmware"
+        },
+        {
+            "cmd":
+            [
+                "make",
+                "clean"
+            ],
+            "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+            "name": "make clean",
+            "syntax": "Packages/Makefile/Make Output.sublime-syntax",
+            "working_dir": "${project_path}/firmware"
+        }
+    ]
+}
