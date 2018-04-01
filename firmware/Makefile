@@ -12,7 +12,7 @@ ECHO := @
 endif
 
 ###############################################################################
-CPU_FREQUENCY_KHZ := 35000
+CPU_FREQUENCY_KHZ := 12000
 
 SOURCES := main.c
 SOURCES += channel_reversing.c
@@ -20,13 +20,14 @@ SOURCES += servo_reader.c
 SOURCES += persistent_storage.c
 SOURCES += lights.c
 SOURCES += drive_mode.c
+SOURCES += utils.c
 
 CFLAGS := -mmcs51
 CFLAGS += --std-c99
-CFLAGS += --iram-size 128
-CFLAGS += --code-size 0x1000
 
 LDFLAGS := -mmcs51
+LDFLAGS += --iram-size 128
+LDFLAGS += --code-size 0x1000
 LDFLAGS += --out-fmt-ihx
 
 DEPENDENCIES := Makefile
