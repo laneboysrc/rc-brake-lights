@@ -251,7 +251,6 @@ Text Label 4200 3000 0    60   ~ 0
 TH_R
 Wire Wire Line
 	5950 5200 5950 5400
-NoConn ~ 4600 4600
 Wire Wire Line
 	6650 3600 6500 3600
 $Comp
@@ -313,4 +312,57 @@ Text Notes 5550 2800 0    60   ~ 0
 INT0 is used so that we can use \nTimer0 in gate mode to measure\nthe pulse duration
 Wire Wire Line
 	7150 4600 7800 4600
+Wire Wire Line
+	3900 4600 4600 4600
+$Comp
+L GND #PWR09
+U 1 1 5AC0AD67
+P 3300 4750
+F 0 "#PWR09" H 3300 4500 50  0001 C CNN
+F 1 "GND" H 3300 4600 50  0000 C CNN
+F 2 "" H 3300 4750 50  0001 C CNN
+F 3 "" H 3300 4750 50  0001 C CNN
+	1    3300 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 4600 3300 4600
+$Comp
+L SW_Push SW1
+U 1 1 5AC0AC8B
+P 3700 4600
+F 0 "SW1" H 3750 4700 50  0000 L CNN
+F 1 "Setup button" H 3700 4540 50  0000 C CNN
+F 2 "WLA:Tact_switch_SMD_6x3_6x2_5" H 3700 4800 50  0001 C CNN
+F 3 "" H 3700 4800 50  0001 C CNN
+	1    3700 4600
+	1    0    0    -1  
+$EndComp
+NoConn ~ 7150 4200
+$Comp
+L PWR_FLAG #FLG010
+U 1 1 5AC0C3FE
+P 4250 2350
+F 0 "#FLG010" H 4250 2425 50  0001 C CNN
+F 1 "PWR_FLAG" H 4250 2500 50  0000 C CNN
+F 2 "" H 4250 2350 50  0001 C CNN
+F 3 "" H 4250 2350 50  0001 C CNN
+	1    4250 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR011
+U 1 1 5AC0C424
+P 4250 2450
+F 0 "#PWR011" H 4250 2200 50  0001 C CNN
+F 1 "GND" H 4250 2300 50  0000 C CNN
+F 2 "" H 4250 2450 50  0001 C CNN
+F 3 "" H 4250 2450 50  0001 C CNN
+	1    4250 2450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4250 2350 4250 2450
+Wire Wire Line
+	3300 4600 3300 4750
 $EndSCHEMATC
