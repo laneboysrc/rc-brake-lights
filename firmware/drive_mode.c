@@ -42,8 +42,8 @@ ESC_MODE_T esc_mode;
 #define AUTO_REVERSE_COUNTER_VALUE_MAX  (2000 / __SYSTICK_IN_MS)
 #define BRAKE_DISARM_COUNTER_VALUE  (1000 / __SYSTICK_IN_MS)
 
-#define AUTO_BRAKE_LIGHTS_FORWARD_ENABLED true
-#define AUTO_BRAKE_LIGHTS_REVERSE_ENABLED true
+// #define AUTO_BRAKE_LIGHTS_FORWARD_ENABLED true
+// #define AUTO_BRAKE_LIGHTS_REVERSE_ENABLED true
 
 #define CENTRE_THRESHOLD_LOW 8
 #define CENTRE_THRESHOLD_HIGH 12
@@ -62,7 +62,7 @@ static void throttle_neutral(void)
             brake_disarm_counter = BRAKE_DISARM_COUNTER_VALUE;
         }
 
-        if (AUTO_BRAKE_LIGHTS_FORWARD_ENABLED) {
+        // if (AUTO_BRAKE_LIGHTS_FORWARD_ENABLED) {
             global_flags.braking = true;
             // The time the brake lights stay on after going back to neutral
             // is random
@@ -70,7 +70,7 @@ static void throttle_neutral(void)
             auto_brake_counter = random_min_max(
                 AUTO_BRAKE_COUNTER_VALUE_FORWARD_MIN,
                 AUTO_BRAKE_COUNTER_VALUE_FORWARD_MAX);
-        }
+        // }
     }
     else if (global_flags.reversing) {
         if (!drive_mode.auto_reverse) {
@@ -79,13 +79,13 @@ static void throttle_neutral(void)
                 AUTO_REVERSE_COUNTER_VALUE_MIN,
                 AUTO_REVERSE_COUNTER_VALUE_MAX);
 
-            if (AUTO_BRAKE_LIGHTS_REVERSE_ENABLED) {
+            // if (AUTO_BRAKE_LIGHTS_REVERSE_ENABLED) {
                 global_flags.braking = true;
                 drive_mode.auto_brake = true;
                 auto_brake_counter = random_min_max(
                     AUTO_BRAKE_COUNTER_VALUE_REVERSE_MIN,
                     AUTO_BRAKE_COUNTER_VALUE_REVERSE_MAX);
-            }
+            // }
         }
     }
     else if (global_flags.braking) {
