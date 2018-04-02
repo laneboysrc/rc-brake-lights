@@ -52,13 +52,13 @@ typedef struct {
 } GLOBAL_FLAGS_T;
 
 // ****************************************************************************
-// ESC_FORWARD_BRAKE_REVERSE
-// The user has to go for brake, then neutral, before reverse engages.
-// Example: Tamiya ESCs
-//
 // ESC_FORWARD_BRAKE_REVERSE_TIMEOUT
 // Reverse can be engaged if the user stays in neutral for a few seconds.
 // Example: The China 320A ESC, HPI SC-15WP
+//
+// ESC_FORWARD_BRAKE_REVERSE
+// The user has to go for brake, then neutral, before reverse engages.
+// Example: Tamiya ESCs
 //
 // ESC_FORWARD_REVERSE
 // Crawler ESC with drag brake, where the ESC switches from forward directly
