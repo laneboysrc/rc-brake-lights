@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include <stdint.h>
-#include <stdbool.h>
 
 #include "stc15x10x.h"
 
@@ -8,6 +6,9 @@
 
 #define BRAKE_LED P30
 #define REVERSING_LED P31
+
+#define LED_ON 1
+#define LED_OFF 0
 
 static uint8_t flash_counter;
 static uint8_t esc_mode_counter;
@@ -22,12 +23,12 @@ static void process_setup_lights(void)
         case SETUP_THROTTLE_REVERSING:
             // Flash all LEDs at 5 Hz
             if (flash_counter == (100 / __SYSTICK_IN_MS)) {
-                BRAKE_LED = REVERSING_LED = 1;
+                BRAKE_LED = REVERSING_LED = LED_ON;
             }
 
             if (flash_counter >= (200 / __SYSTICK_IN_MS)) {
                 flash_counter = 0;
-                BRAKE_LED = REVERSING_LED = 0;
+                BRAKE_LED = REVERSING_LED = LED_OFF;
             }
             break;
 
@@ -37,15 +38,14 @@ static void process_setup_lights(void)
             if (flash_counter >= (100 / __SYSTICK_IN_MS)) {
                 flash_counter = 0;
 
-
                 // The LEDs are turned off at every odd count
                 if (esc_mode_counter & 1) {
-                    BRAKE_LED = REVERSING_LED = 0;
+                    BRAKE_LED = REVERSING_LED = LED_OFF;
                 }
                 // The LEDs are turned on at even counts which value is less
                 // than or equal two times the ESC mode number
                 else if (esc_mode_counter <= (esc_mode << 1)) {
-                    BRAKE_LED = REVERSING_LED = 1;
+                    BRAKE_LED = REVERSING_LED = LED_ON;
                 }
 
                 //The sequence repeats every 15 counts.
@@ -65,8 +65,7 @@ static void process_setup_lights(void)
 // ****************************************************************************
 void init_lights(void)
 {
-    BRAKE_LED = 0;
-    REVERSING_LED = 0;
+    BRAKE_LED = REVERSING_LED = LED_OFF;
 
     // Make P3.0 and P3.1 a push-pull output
     P3M0 = (1 << 0) | (1 << 1);
@@ -80,6 +79,13 @@ void process_lights(void)
     // Process the lights only every __SYSTICK_IN_MS
     // This way we can easily time blinking and flash effects
     if (!global_flags.systick) {
+        return;
+    }
+
+    // The system is initializing: Brake light on
+    if (global_flags.initializing) {
+        REVERSING_LED = LED_OFF;
+        BRAKE_LED = LED_ON;
         return;
     }
 

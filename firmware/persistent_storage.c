@@ -1,5 +1,4 @@
 #include <stdint.h>
-#include <stdbool.h>
 
 #include "stc15x10x.h"
 

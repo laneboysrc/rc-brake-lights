@@ -14,24 +14,8 @@
 
 ******************************************************************************/
 #include <stdint.h>
-#include <stdbool.h>
 
 #include "globals.h"
-
-
-static uint16_t throttle_threshold = 0xffff;    // Signify uninitialized value
-static uint16_t brake_disarm_counter;
-static uint16_t auto_brake_counter;
-static uint16_t auto_reverse_counter;
-
-static struct {
-    unsigned int brake_disarm : 1;
-    unsigned int auto_brake : 1;
-    unsigned int auto_reverse : 1;
-    unsigned int brake_armed : 1;
-} drive_mode;
-
-ESC_MODE_T esc_mode;
 
 
 #define AUTO_BRAKE_COUNTER_VALUE_FORWARD_MIN  (500 / __SYSTICK_IN_MS)
@@ -47,6 +31,22 @@ ESC_MODE_T esc_mode;
 
 #define CENTRE_THRESHOLD_LOW 8
 #define CENTRE_THRESHOLD_HIGH 12
+
+
+static uint16_t throttle_threshold = CENTRE_THRESHOLD_HIGH;
+static uint16_t brake_disarm_counter;
+static uint16_t auto_brake_counter;
+static uint16_t auto_reverse_counter;
+
+static struct {
+    unsigned int brake_disarm : 1;
+    unsigned int auto_brake : 1;
+    unsigned int auto_reverse : 1;
+    unsigned int brake_armed : 1;
+} drive_mode;
+
+ESC_MODE_T esc_mode;
+
 
 // ****************************************************************************
 static void throttle_neutral(void)
@@ -162,11 +162,6 @@ void process_drive_mode(void)
     }
 
     if (global_flags.new_channel_data) {
-        // Initialization as the compiler complains that config.* is not static.
-        if (throttle_threshold == 0xffff) {
-            throttle_threshold = CENTRE_THRESHOLD_HIGH;
-        }
-
         if (channel[TH].absolute < throttle_threshold) {
             // We are in neutral
             throttle_neutral();

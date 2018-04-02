@@ -26,7 +26,7 @@ static void service_systick(void)
 }
 
 
-// ----------------------------------------------------------------------------
+// ****************************************************************************
 static void init_softtimer(void)
 {
     T2H = T2_RELOAD_VALUE >> 8;
@@ -36,17 +36,18 @@ static void init_softtimer(void)
 }
 
 
-//----------------------------------------------------------------------------
+// ****************************************************************************
 void main()
 {
     global_flags.initializing = true;
 
-    init_softtimer();
     init_lights();
-    init_servo_reader();
     load_persistent_storage();
+    init_softtimer();
+    init_servo_reader();
 
-    EA = 1;                 // Enable interrupts
+    // Enable interrupts
+    EA = 1;
 
     while (1) {
         service_systick();
@@ -59,8 +60,8 @@ void main()
 }
 
 
-// ----------------------------------------------------------------------------
-extern void exint0(void) __interrupt (0);
+// ****************************************************************************
+extern void extint0(void) __interrupt (0);
 
 void timer2int(void) __interrupt (12)
 {

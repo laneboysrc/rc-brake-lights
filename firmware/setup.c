@@ -29,7 +29,10 @@
 
 
 #define SWITCH P35
-#define PRESSED 0
+#define PRESSED 0           // The push-button is active low
+
+#define SWITCH_HOLD_TIME (3000 / __SYSTICK_IN_MS)
+#define THROTTLE_THRESHOLD 50
 
 static enum {
     SETUP_STATE_IDLE = 0,
@@ -56,7 +59,7 @@ void process_setup(void)
         case SETUP_STATE_IDLE:
             if (SWITCH == PRESSED) {
                 setup_state = SETUP_STATE_ENTER_WAIT;
-                setup_counter = 3000 / __SYSTICK_IN_MS;
+                setup_counter = SWITCH_HOLD_TIME;
             }
             break;
 
@@ -85,7 +88,10 @@ void process_setup(void)
                 global_flags.setup = SETUP_ESC_MODE;
             }
 
-            if (channel[TH].absolute > 50) {
+            if (channel[TH].absolute > THROTTLE_THRESHOLD) {
+                // The user is expected to have pushed the throttle in "forward"
+                // direction. So if we read a negative throttle value we must
+                // reverse the direction.
                 if (channel[TH].normalized < 0) {
                     channel[TH].reversed = channel[TH].reversed ? 0 : 1;
                     write_persistent_storage();
@@ -104,11 +110,13 @@ void process_setup(void)
         case SETUP_STATE_ESC:
             if (SWITCH == PRESSED) {
                 setup_state = SETUP_STATE_EXIT_WAIT;
-                setup_counter = 3000 / __SYSTICK_IN_MS;
+                setup_counter = SWITCH_HOLD_TIME;
             }
             break;
 
         case SETUP_STATE_EXIT_WAIT:
+            // If the switch is pressed for less than 3 seconds then cycle to
+            // to the next ESC mode.
             if (SWITCH != PRESSED) {
                 ++esc_mode;
                 if (esc_mode == ESC_MODE_COUNT) {

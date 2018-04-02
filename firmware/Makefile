@@ -63,5 +63,6 @@ flash: $(TARGET)
 	@echo [FLASH] $<
 	$(ECHO) stcgal -t $(CPU_FREQUENCY_KHZ) -b 1200 $<
 
+program: flash
 
-.PHONY : all clean flash
+.PHONY : all clean flash program

@@ -1,7 +1,7 @@
 #ifndef	_STC15X10X_H
 #define	_STC15X10X_H
 
-#include "compiler.h"
+#include <compiler.h>
 
 #define NOP()  __asm__("nop")
 

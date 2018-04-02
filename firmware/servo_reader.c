@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdint.h>
 #include <stdbool.h>
 
 #include "stc15x10x.h"
@@ -22,23 +22,12 @@ static volatile bool new_data;
 static volatile uint16_t raw_data;
 
 static enum {
-    WAIT_FOR_FIRST_PULSE,
+    INITIALIZE = 0,
     WAIT_FOR_TIMEOUT,
     NORMAL_OPERATION
-} servo_reader_state = WAIT_FOR_FIRST_PULSE;
+} servo_reader_state = INITIALIZE;
 
-CHANNEL_T channel[1] = {
-    {   // THROTTLE
-        .normalized = 0,
-        .absolute = 0,
-        .reversed = false,
-        .endpoint = {
-            .left = 1250,
-            .centre = 1500,
-            .right = 1750,
-        }
-    }
-};
+CHANNEL_T channel[1];
 
 
 // ****************************************************************************
@@ -137,17 +126,18 @@ void read_all_servo_channels(void)
 
     if (new_data) {
         channel[TH].raw_data = raw_data;
-        new_data = false;
         new_channel_data = true;
+
+        new_data = false;
     }
 
     switch (servo_reader_state) {
-        case WAIT_FOR_FIRST_PULSE:
+        case INITIALIZE:
             // Start Timer0 and enable INT0
             TR0 = 1;
             EX0 = 1;
 
-            servo_reader_timer = STARTUP_TIME / __SYSTICK_IN_MS;
+            servo_reader_timer = STARTUP_TIME;
             servo_reader_state = WAIT_FOR_TIMEOUT;
             remaining_pulse_count = 50;
             break;
@@ -159,6 +149,11 @@ void read_all_servo_channels(void)
                 }
             }
 
+            // Initialization is finished if START_UP time has passed and
+            // more than 50 servo pulses have been received. This way we ensure
+            // the RC system is up-and-running.
+            //
+            // At that point we take the throttle value as "neutral position"
             if (servo_reader_timer == 0  &&  remaining_pulse_count == 0) {
                 initialize_channel(&channel[TH]);
 
@@ -175,7 +170,7 @@ void read_all_servo_channels(void)
             break;
 
         default:
-            servo_reader_state = WAIT_FOR_FIRST_PULSE;
+            servo_reader_state = INITIALIZE;
             break;
     }
 }
@@ -183,7 +178,7 @@ void read_all_servo_channels(void)
 
 // ****************************************************************************
 // Interrupt triggered by the negative edge of the servo pulse
-void exint0() __interrupt (0)
+void extint0() __interrupt (0)
 {
     // Only store new data if the last one was taken out already and
     // Timer0 was not overflowing.
