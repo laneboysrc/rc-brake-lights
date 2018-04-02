@@ -12,6 +12,7 @@ uint32_t entropy;
 
 static volatile bool tick_interrupt_fired;
 
+
 // ****************************************************************************
 static void service_systick(void)
 {
@@ -24,6 +25,7 @@ static void service_systick(void)
     }
 }
 
+
 // ----------------------------------------------------------------------------
 static void init_softtimer(void)
 {
@@ -33,6 +35,7 @@ static void init_softtimer(void)
     IE2 |= 0x04;    // Enable Timer2 interrupt
 }
 
+
 //----------------------------------------------------------------------------
 void main()
 {
@@ -41,17 +44,20 @@ void main()
     init_softtimer();
     init_lights();
     init_servo_reader();
+    load_persistent_storage();
+
     EA = 1;                 // Enable interrupts
 
     while (1) {
         service_systick();
 
         read_all_servo_channels();
-        process_channel_reversing_setup();
         process_drive_mode();
+        process_setup();
         process_lights();
     }
 }
+
 
 // ----------------------------------------------------------------------------
 extern void exint0(void) __interrupt (0);

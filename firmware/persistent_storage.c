@@ -6,13 +6,14 @@
 #include "globals.h"
 
 
-#define PERSISTENT_DATA_VERSION 1
-
 #define ENABLE_IAP 0x80             // for SYSCLK<30MHz
 #define EEPROM_CMD_IDLE 0
 #define EEPROM_CMD_READ 1
 #define EEPROM_CMD_PROGRAM 2
 #define EEPROM_CMD_ERASE 3
+
+#define EEPROM_ADDRESS_ESC_MODE 0x000
+#define EEPROM_ADDRESS_TH_REVERSED 0x001
 
 //----------------------------------------------------------------------------
 // EEPROM functions taken straight from the datasheet
@@ -66,52 +67,26 @@ static void EEPROM_EraseSector(uint16_t addr)
     EEPROM_Idle();
 }
 
+
 // ****************************************************************************
 void load_persistent_storage(void)
 {
-    // uint32_t defaults[6];
-    // const volatile uint32_t *ptr;
-    // const volatile uint32_t *persistent_data = HAL_persistent_storage_read();
+    esc_mode = EEPROM_ReadByte(EEPROM_ADDRESS_ESC_MODE);
+    if (esc_mode >= ESC_MODE_COUNT) {
+        esc_mode = 0;
+    }
 
-    // defaults[OFFSET_VERSION] = PERSISTENT_DATA_VERSION;
-    // defaults[OFFSET_STEERING_REVERSED] = false;
-    // defaults[OFFSET_THROTTLE_REVERSED] = false;
-    // defaults[OFFSET_SERVO_LEFT] = 1000;
-    // defaults[OFFSET_SERVO_CENTRE] = 1500;
-    // defaults[OFFSET_SERVO_RIGHT] = 2000;
-
-    // if (defaults[0] != persistent_data[0]) {
-    //     ptr = defaults;
-    // }
-    // else {
-    //     ptr = persistent_data;
-    // }
-
-    // channel[ST].reversed = ptr[OFFSET_STEERING_REVERSED];
-    // channel[TH].reversed = ptr[OFFSET_THROTTLE_REVERSED];
-    // servo_output_endpoint.left = ptr[OFFSET_SERVO_LEFT];
-    // servo_output_endpoint.centre = ptr[OFFSET_SERVO_CENTRE];
-    // servo_output_endpoint.right = ptr[OFFSET_SERVO_RIGHT];
+    channel[TH].reversed = EEPROM_ReadByte(EEPROM_ADDRESS_TH_REVERSED);
+    if (channel[TH].reversed > 1) {
+        channel[TH].reversed = 0;
+    }
 }
 
 
 // ****************************************************************************
 void write_persistent_storage(void)
 {
-    // uint32_t new_data[6];
-    // const char *error_message;
-
-    // new_data[OFFSET_VERSION] = PERSISTENT_DATA_VERSION;
-    // new_data[OFFSET_STEERING_REVERSED] = channel[ST].reversed;
-    // new_data[OFFSET_THROTTLE_REVERSED] = channel[TH].reversed;
-    // new_data[OFFSET_SERVO_LEFT] = servo_output_endpoint.left;
-    // new_data[OFFSET_SERVO_CENTRE] = servo_output_endpoint.centre;
-    // new_data[OFFSET_SERVO_RIGHT] = servo_output_endpoint.right;
-
-    // error_message = HAL_persistent_storage_write(new_data);
-
-    // if (error_message) {
-    //     fprintf(STDOUT_DEBUG, error_message);
-    //     fprintf(STDOUT_DEBUG, "\n");
-    // }
+    EEPROM_EraseSector(EEPROM_ADDRESS_ESC_MODE);
+    EEPROM_ProgramByte(EEPROM_ADDRESS_ESC_MODE, esc_mode);
+    EEPROM_ProgramByte(EEPROM_ADDRESS_TH_REVERSED, channel[TH].reversed);
 }

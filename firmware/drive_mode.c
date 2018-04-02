@@ -18,6 +18,7 @@
 
 #include "globals.h"
 
+
 static uint16_t throttle_threshold = 0xffff;    // Signify uninitialized value
 static uint16_t brake_disarm_counter;
 static uint16_t auto_brake_counter;
@@ -161,7 +162,7 @@ void process_drive_mode(void)
     }
 
     if (global_flags.new_channel_data) {
-        // Initialization as the compile complains that config.* is not static.
+        // Initialization as the compiler complains that config.* is not static.
         if (throttle_threshold == 0xffff) {
             throttle_threshold = CENTRE_THRESHOLD_HIGH;
         }

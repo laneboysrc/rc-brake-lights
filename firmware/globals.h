@@ -8,8 +8,7 @@
 extern void load_persistent_storage(void);
 extern void write_persistent_storage(void);
 
-extern void reversing_setup_action(uint8_t ch3_clicks);
-extern void process_channel_reversing_setup(void);
+extern void process_setup(void);
 
 extern void init_lights(void);
 extern void process_lights(void);
@@ -40,15 +39,16 @@ typedef struct {
 
 // ****************************************************************************
 typedef struct {
-    unsigned int systick : 1;               // Set for one mainloop every 20 ms
+    unsigned int systick : 1;               // Set for one mainloop every __SYSTICK_IN_MS
     unsigned int new_channel_data : 1;      // Set for one mainloop every time servo pulses were received
 
     unsigned int initializing : 1;
-    unsigned int setup : 2;
 
     unsigned int forward : 1;               // Set when the car is driving forward
     unsigned int braking : 1;               // Set when the brakes are enganged
     unsigned int reversing : 1;             // Set when the car is reversing
+
+    unsigned int setup : 2;                 // Set when performing throttle reversing and ESC mode selection
 } GLOBAL_FLAGS_T;
 
 // ****************************************************************************
@@ -70,7 +70,9 @@ typedef enum {
     ESC_FORWARD_BRAKE_REVERSE_TIMEOUT,
     ESC_FORWARD_BRAKE_REVERSE,
     ESC_FORWARD_REVERSE,
-    ESC_FORWARD_BRAKE
+    ESC_FORWARD_BRAKE,
+
+    ESC_MODE_COUNT
 } ESC_MODE_T;
 
 // ****************************************************************************

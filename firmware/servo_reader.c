@@ -17,16 +17,15 @@
 
 #define STARTUP_TIME (2000 / __SYSTICK_IN_MS)
 
+
+static volatile bool new_data;
+static volatile uint16_t raw_data;
+
 static enum {
     WAIT_FOR_FIRST_PULSE,
     WAIT_FOR_TIMEOUT,
     NORMAL_OPERATION
 } servo_reader_state = WAIT_FOR_FIRST_PULSE;
-
-
-
-static volatile bool new_data;
-static volatile uint16_t raw_data;
 
 CHANNEL_T channel[1] = {
     {   // THROTTLE
@@ -41,12 +40,14 @@ CHANNEL_T channel[1] = {
     }
 };
 
+
 // ****************************************************************************
 static void initialize_channel(CHANNEL_T *c) {
     c->endpoint.centre = c->raw_data;
     c->endpoint.left = c->raw_data - INITIAL_ENDPOINT_DELTA;
     c->endpoint.right = c->raw_data + INITIAL_ENDPOINT_DELTA;
 }
+
 
 // ****************************************************************************
 static void normalize_channel(CHANNEL_T *c)
@@ -106,17 +107,16 @@ static void normalize_channel(CHANNEL_T *c)
 }
 
 
-
 // ****************************************************************************
 void init_servo_reader(void)
 {
     // Setup timer 0 with a clock of 1 MHz. We run the CPU at 12 MHz, so the
-    // divide by 12 gives us just that.
+    // default divide by 12 gives us just that.
 
     TMOD = 0x09;        // Use Timer0 Mode 1, enable gate mode of INT0
     TL0 = TH0 = 0;
 
-    TH_IN = 1;             // Make the TH an input (weak pull-up)
+    TH_IN = 1;          // Make the TH an input (weak pull-up)
     IT0 = 1;            // INT0 on falling edge only
 }
 
@@ -137,7 +137,7 @@ void read_all_servo_channels(void)
 
     if (new_data) {
         channel[TH].raw_data = raw_data;
-        new_data = 0;
+        new_data = false;
         new_channel_data = true;
     }
 
@@ -154,7 +154,6 @@ void read_all_servo_channels(void)
 
         case WAIT_FOR_TIMEOUT:
             if (new_channel_data) {
-                new_channel_data = false;
                 if (remaining_pulse_count) {
                     --remaining_pulse_count;
                 }
@@ -170,7 +169,6 @@ void read_all_servo_channels(void)
 
         case NORMAL_OPERATION:
             if (new_channel_data) {
-                new_channel_data = false;
                 normalize_channel(&channel[TH]);
                 global_flags.new_channel_data = true;
             }
@@ -182,14 +180,18 @@ void read_all_servo_channels(void)
     }
 }
 
+
 // ****************************************************************************
+// Interrupt triggered by the negative edge of the servo pulse
 void exint0() __interrupt (0)
 {
-    if (!new_data) {
-        // FIXME: check timer overflow?
+    // Only store new data if the last one was taken out already and
+    // Timer0 was not overflowing.
+    if (!new_data && !TF0) {
         new_data = 1;
         raw_data = (TH0 << 8) | TL0;
     }
 
     TH0 = TL0 = 0;
+    TF0 = 0;
 }

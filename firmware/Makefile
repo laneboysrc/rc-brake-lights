@@ -19,9 +19,9 @@ SOURCES := main.c
 SOURCES += drive_mode.c
 SOURCES += lights.c
 SOURCES += persistent_storage.c
+SOURCES += random.c
 SOURCES += servo_reader.c
 SOURCES += setup.c
-SOURCES += utils.c
 
 CFLAGS := -mmcs51
 CFLAGS += --std-c99
