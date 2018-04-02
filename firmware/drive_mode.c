@@ -17,7 +17,6 @@
 #include <stdbool.h>
 
 #include "globals.h"
-#include "utils.h"
 
 static uint16_t throttle_threshold = 0xffff;    // Signify uninitialized value
 static uint16_t brake_disarm_counter;

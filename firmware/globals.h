@@ -19,6 +19,9 @@ extern void process_drive_mode(void);
 extern void init_servo_reader(void);
 extern void read_all_servo_channels(void);
 
+extern uint16_t random_min_max(uint16_t min, uint16_t max);
+
+
 // ****************************************************************************
 typedef struct {
     uint16_t left;
@@ -40,9 +43,8 @@ typedef struct {
     unsigned int systick : 1;               // Set for one mainloop every 20 ms
     unsigned int new_channel_data : 1;      // Set for one mainloop every time servo pulses were received
 
-    unsigned int no_signal : 1;
     unsigned int initializing : 1;
-    unsigned int reversing_setup : 2;
+    unsigned int setup : 2;
 
     unsigned int forward : 1;               // Set when the car is driving forward
     unsigned int braking : 1;               // Set when the brakes are enganged
@@ -50,19 +52,33 @@ typedef struct {
 } GLOBAL_FLAGS_T;
 
 // ****************************************************************************
-// If ESC_FORWARD_BRAKE_REVERSE, the user has to go for
-// brake, then neutral, before reverse engages.
-// If ESC_FORWARD_BRAKE_REVERSE_TIMEOUT, reverse can be engaged if the user
-// stays in neutral for a few seconds.
+// ESC_FORWARD_BRAKE_REVERSE
+// The user has to go for brake, then neutral, before reverse engages.
+// Example: Tamiya ESCs
 //
-// Tamiya ESC are of type ESC_FORWARD_BRAKE_REVERSE.
-// The China ESC and HPI SC-15WP are of type ESC_FORWARD_BRAKE_REVERSE_TIMEOUT.
+// ESC_FORWARD_BRAKE_REVERSE_TIMEOUT
+// Reverse can be engaged if the user stays in neutral for a few seconds.
+// Example: The China 320A ESC, HPI SC-15WP
+//
+// ESC_FORWARD_REVERSE
+// Crawler ESC with drag brake, where the ESC switches from forward directly
+// into reverse.
+//
+// ESC_FORWARD_BRAKE
+// ESC in race mode where reversing is not allowed.
 typedef enum {
     ESC_FORWARD_BRAKE_REVERSE_TIMEOUT,
     ESC_FORWARD_BRAKE_REVERSE,
     ESC_FORWARD_REVERSE,
     ESC_FORWARD_BRAKE
 } ESC_MODE_T;
+
+// ****************************************************************************
+typedef enum {
+    SETUP_OFF = 0,
+    SETUP_THROTTLE_REVERSING = 0x01,
+    SETUP_ESC_MODE = 0x02
+} SETUP_T;
 
 // ****************************************************************************
 extern CHANNEL_T channel[1];

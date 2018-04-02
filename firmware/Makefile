@@ -14,12 +14,13 @@ endif
 ###############################################################################
 CPU_FREQUENCY_KHZ := 12000
 
+# Note: main.c must the the first file in the list! SDCC requirement.
 SOURCES := main.c
-SOURCES += channel_reversing.c
-SOURCES += servo_reader.c
-SOURCES += persistent_storage.c
-SOURCES += lights.c
 SOURCES += drive_mode.c
+SOURCES += lights.c
+SOURCES += persistent_storage.c
+SOURCES += servo_reader.c
+SOURCES += setup.c
 SOURCES += utils.c
 
 CFLAGS := -mmcs51
