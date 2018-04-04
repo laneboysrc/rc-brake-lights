@@ -31,8 +31,11 @@ LDFLAGS += --iram-size 128
 LDFLAGS += --code-size 0x1000
 LDFLAGS += --out-fmt-ihx
 
-DEPENDENCIES := Makefile
+DEPENDENCIES := makefile
 DEPENDENCIES += globals.h
+
+STC_OPTIONS := --option low_voltage_reset=true
+STC_OPTIONS += --option low_voltage_threshold=5
 
 ###############################################################################
 # TARGET and object file setup
@@ -61,7 +64,7 @@ clean:
 
 flash: $(TARGET)
 	@echo [FLASH] $<
-	$(ECHO) stcgal -t $(CPU_FREQUENCY_KHZ) -b 1200 $<
+	$(ECHO) stcgal -t $(CPU_FREQUENCY_KHZ) $(STC_OPTIONS) -b 1200 $<
 
 program: flash
 
