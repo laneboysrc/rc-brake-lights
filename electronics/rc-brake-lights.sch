@@ -295,7 +295,7 @@ F 3 "" H 1900 2700 50  0001 C CNN
 	1    1900 2700
 	-1   0    0    1   
 $EndComp
-Text Notes 1200 4100 0    60   ~ 0
+Text Notes 1200 3650 0    60   ~ 0
 Two parallel connections for \nthe Throttle (TH) channel:\nOne to the receiver, and \nanother one to plug in the ESC.
 Text Notes 8900 4150 0    60   ~ 0
 Two red LED in series for brake lights,\ntwo white LED in parallel for reversing \nlights.\nThe MCU can drive at most 20 mA per \noutput.\n\nThe output pins are also used \nfor programming the MCU
