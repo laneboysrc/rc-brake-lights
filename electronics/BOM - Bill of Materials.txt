@@ -1,0 +1,32 @@
+Partlist for the RC Brake & Reversing Light Controller
+
+
+Perfboard version with through-hole components
+----------------------------------------------
+
+Part  Value      Device            Package           Description
+C1    10uF/10V   C-Pol             Radial            Electrolytic capacitor, exact value not important
+D1    1N4148     D                 Throughole        Signal diode, must be an ordinary silicon diode, not a Schottky diode
+J1               Pin-header        2x3               Pin header for throttle servo input
+J2               Pin-header        1x3               Pin header for LED output
+R1    1k         R                 Throughhole       Resistor 1/8W or more
+R2    220        R                 Throughhole       Resistor 1/8W or more
+R2    220        R                 Throughhole       Resistor 1/8W or more
+U1    STC15W104  MCU               DIP8              STC Microcontroller, 8051-based, 2.5..5.5V supply range
+SW1              SPST                                Push button
+
+
+PCB version with SMD components
+-------------------------------
+
+Part  Value      Device            Package           Description
+C1    10uF/10V   C0603             0603              MLCC capacitor X7R or X5R
+D1    T4         D                 SOD-123           Signal diode marked T4 (eBay, AliExpress)
+J1               Pin-header        2x3               Pin header for throttle servo input
+J2               Pin-header        1x3               Pin header for LED output
+R1    1k         R                 0603              Resistor
+R2    220        R                 0603              Resistor
+R2    220        R                 0603              Resistor
+U1    STC15W104  MCU               SOP8              STC Microcontroller, 8051-based, 2.5..5.5V supply range
+SW1              SPST              3x6x2.5mm         Push button, e.g. https://www.aliexpress.com/item/100pcs-3X6X2-5mm-Tactile-Push-Button-Switch-Tact-Switches-Mini-Micro-Switch-2-Pin-SMD/32814876010.html
+
