@@ -8,7 +8,7 @@ The brake lights automatically turn on for a short, random time when the throttl
 
 The light controller supports various ESC modes to ensure the lights are in sync with the way your ESC controlls the drive motor.
 
-The aim of the project is to make it easy to build anyone with minimal electronics knowledge. If you are unable to build it yourself please contact [laneboysrc@gmail.com]<laneboysrc@gmail.com>; we'd be happy to sell you one.
+The aim of the project is to make it easy to build anyone with minimal electronics knowledge. If you are unable to build it yourself please contact [laneboysrc@gmail.com](laneboysrc@gmail.com); we'd be happy to sell you one.
 
 If you are looking for more features check out our original [DIY RC Light Controller](https://github.com/laneboysrc/rc-light-controller).
 
