@@ -31,11 +31,12 @@ LDFLAGS += --iram-size 128
 LDFLAGS += --code-size 0x1000
 LDFLAGS += --out-fmt-ihx
 
-DEPENDENCIES := makefile
+DEPENDENCIES := Makefile
 DEPENDENCIES += globals.h
 
 STC_OPTIONS := --option low_voltage_reset=true
-STC_OPTIONS += --option low_voltage_threshold=5
+STC_OPTIONS += --option low_voltage_threshold=0
+STC_OPTIONS += --option eeprom_lvd_inhibit=true
 
 ###############################################################################
 # TARGET and object file setup
