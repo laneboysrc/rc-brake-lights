@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="130mm"
+   height="100mm"
+   viewBox="0 0 460.62992 354.33071"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="flashing-with-raspberry-pi.svg"
+   inkscape:export-filename="/home/laneboysrc/projects/rc-brake-lights/doc/flashing-with-raspberry-pi.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       id="perspective40"
+       inkscape:persp3d-origin="218.00001 : 328.99998 : 1"
+       inkscape:vp_z="436.00001 : 493.49997 : 1"
+       inkscape:vp_y="0 : 999.99995 : 0"
+       inkscape:vp_x="0 : 493.49997 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.69672"
+     inkscape:cx="301.1016"
+     inkscape:cy="148.42828"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-global="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1151"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-698.03149)">
+    <image
+       sodipodi:absref="/home/laneboysrc/projects/rc-brake-lights/doc/gpio-numbers-pi2.png"
+       xlink:href="gpio-numbers-pi2.png"
+       width="397.72687"
+       height="118.41534"
+       preserveAspectRatio="none"
+       style="image-rendering:optimizeQuality"
+       id="image3389"
+       x="30.402437"
+       y="906.67102" />
+    <image
+       sodipodi:absref="/home/laneboysrc/projects/rc-brake-lights/doc/rc-brake-lights.png"
+       xlink:href="rc-brake-lights.png"
+       width="284.99081"
+       height="81.733208"
+       preserveAspectRatio="none"
+       id="image3489"
+       x="85.863121"
+       y="745.91315" />
+    <path
+       sodipodi:nodetypes="czc"
+       inkscape:connector-curvature="0"
+       id="path4489"
+       d="M 113.03084,924.89733 C 112.00861,889.19621 68.730634,869.68518 54.446003,858.241 40.161372,846.79681 13.472978,784.73227 90.684965,784.93129"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 128.32915,923.54283 c 2.292,-44.69047 -49.416357,-53.70027 -70.992288,-88.46594 -21.575931,-34.76567 -6.899707,-67.19055 33.072544,-67.94506"
+       id="path4501"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="czc" />
+    <path
+       sodipodi:nodetypes="czzc"
+       inkscape:connector-curvature="0"
+       id="path4224"
+       d="m 160.95279,924.4185 c 0,-27.8997 10.09127,-60.90436 43.83823,-60.59862 33.74696,0.30575 122.15257,5.16158 163.13369,5.87322 40.98111,0.71165 64.31088,-65.05648 -4.92661,-66.72"
+       style="fill:none;fill-rule:evenodd;stroke:#ffd42a;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="cssc"
+       inkscape:connector-curvature="0"
+       id="path3649"
+       d="m 145.22927,924.64107 c -0.55947,-19.53768 -9.13108,-62.75887 32.3926,-73.07559 35.04809,-8.70784 175.85855,11.39832 216.08643,0.51207 40.22789,-10.88624 52.8459,-68.10569 -29.34137,-66.10257"
+       style="fill:none;fill-rule:evenodd;stroke:#88aa00;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="318.81317"
+       y="851.07233"
+       id="text3392"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3394"
+         x="318.81317"
+         y="851.07233">TXD</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="318.81317"
+       y="883.99548"
+       id="text3396"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3398"
+         x="318.81317"
+         y="883.99548">RXD</tspan></text>
+  </g>
+</svg>

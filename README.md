@@ -64,7 +64,7 @@ The Raspberry Pi has a serial port accessible on its GPIO pin-header, so we can 
 
 Connect the RC-brake-lights controller as follows:
 
-![MISSING](missing)
+![Flashing with Raspberry Pi](doc/flashing-with-raspberry-pi.png)
 
 Do not connect `+` yet, only after starting STCGAL.
 
