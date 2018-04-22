@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="130mm"
+   height="100mm"
+   viewBox="0 0 460.62992 354.33071"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="flashing-with-usb-to-serial.svg"
+   inkscape:export-filename="/home/laneboysrc/projects/rc-brake-lights/doc/flashing-with-usb-to-serial.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       id="perspective40"
+       inkscape:persp3d-origin="218.00001 : 328.99998 : 1"
+       inkscape:vp_z="436.00001 : 493.49997 : 1"
+       inkscape:vp_y="0 : 999.99995 : 0"
+       inkscape:vp_x="0 : 493.49997 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.69672"
+     inkscape:cx="131.37038"
+     inkscape:cy="230.57396"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-global="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1151"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-698.03149)">
+    <image
+       sodipodi:absref="/home/laneboysrc/projects/rc-brake-lights/doc/rc-brake-lights.png"
+       xlink:href="rc-brake-lights.png"
+       y="726.80908"
+       x="59.997154"
+       id="image3489"
+       preserveAspectRatio="none"
+       height="81.733208"
+       width="284.99081" />
+    <path
+       sodipodi:nodetypes="czc"
+       inkscape:connector-curvature="0"
+       id="path4489"
+       d="M 251.59979,993.90446 C 170.42291,1064.5851 76.458897,887.7116 67.773304,869.19495 59.087711,850.6783 24.442789,765.62822 64.524313,766.41662"
+       style="fill:none;fill-rule:evenodd;stroke:#ff0000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 270.72902,1019.0717 C 119.78418,1093.4345 40.964692,875.78684 32.354955,835.42213 23.745217,795.05743 24.276503,748.19292 64.248754,747.43841"
+       id="path4501"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="czc" />
+    <path
+       sodipodi:nodetypes="czzc"
+       inkscape:connector-curvature="0"
+       id="path4224"
+       d="m 264.72336,1010.6856 c -54.09977,35.1847 -81.42094,-51.64703 -76.44703,-80.29923 4.97391,-28.65219 65.72493,-94.32705 141.50461,-97.15778 75.77968,-2.83073 78.2832,-47.55406 9.04571,-49.21758"
+       style="fill:none;fill-rule:evenodd;stroke:#ffd42a;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="210.43507"
+       y="945.71716"
+       id="text3392"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3394"
+         x="210.43507"
+         y="945.71716">TXD</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="152.38188"
+       y="944.45673"
+       id="text3396"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3398"
+         x="152.38188"
+         y="944.45673">RXD</tspan></text>
+    <image
+       sodipodi:absref="/home/laneboysrc/projects/rc-brake-lights/doc/usb-to-serial.png"
+       xlink:href="usb-to-serial.png"
+       width="234.827"
+       height="184.60011"
+       preserveAspectRatio="none"
+       style="image-rendering:optimizeQuality"
+       id="image3387"
+       x="220.68404"
+       y="841.05951" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#44aa00;stroke-width:3.54330707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 261.18713,1000.9609 c -36.4186,28.1122 -60.49822,-34.26049 -55.52431,-62.91269 4.97391,-28.65219 65.72493,-94.32705 141.50461,-97.15778 75.77968,-2.83073 70.91604,-76.728 -8.63546,-74.56059"
+       id="path3390"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="czzc" />
+  </g>
+</svg>
