@@ -4,6 +4,8 @@ This project is an easy-to-build light controller for Radio Controlled cars that
 
 ![RC Brake Lights circuit board](doc/rc-brake-lights.png)
 
+![RC Brake Lights 3D view](doc/rc-brake-lights-3D.jpg)
+
 It hooks between your ESC and receiver.
 
 The brake lights automatically turn on for a short, random time when the throttle goes to neutral. The reversing lights turn on when driving backwards.
@@ -93,7 +95,9 @@ Once started, STCGAL prompts you to power-cycle the MCU. Plug in `+` and STCGAL 
 
 ## Connecting the light controller to your RC system
 
-The light controller plugs between your ESC and receiver. The `B` output drives two red LEDs in parallel for the brake light function, the `R` output drives two white LEDs in parallel for the reversing light function.
+The light controller has two parallel connectors on the input side. Connect your ESC to one of the plugs and connect the TH input of the receiver with a male-to-male servo cable  to the other plug.
+
+The `B` output drives two red LEDs in parallel for the brake light function, the `R` output drives two white LEDs in parallel for the reversing light function.
 
 ![Wiring diagram](doc/rc-brake-lights-wiring.png)
 
