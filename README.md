@@ -61,7 +61,9 @@ Do not connect `+` yet, only after starting STCGAL.
 
 Download the [firmware Intel-HEX file](rc-brake-lights.ihx) and execute STCGAL as follows:
 
-    python stcgal.py -t 12000 --option low_voltage_reset=true --option low_voltage_threshold=0 --option eeprom_lvd_inhibit=true -b 1200 rc-brake-lights.ihx
+    python stcgal.py -t 12000 --option low_voltage_reset=true --option low_voltage_threshold=0 --option eeprom_lvd_inhibit=true -b 1200 -p COM7 rc-brake-lights.ihx
+
+*Important*: Replace the COM port number with the one of your USB-to-serial adapter. In Windows consult the Device Manager to find out which port number to use.
 
 Once started, STCGAL prompts you to power-cycle the circuit. Plug in `+` and STCGAL should find the MCU and program it. Your controller is now ready to use.
 
