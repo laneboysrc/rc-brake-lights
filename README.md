@@ -47,7 +47,11 @@ To flash the firmware into the STC15W104, use [STCGAL](https://github.com/grigor
 
 ### Loading the firmware with an USB-to-serial adapter
 
-Follow the instructions at [https://github.com/grigorig/stcgal#installation](https://github.com/grigorig/stcgal#installation) to install STCGAL. This programming tool for the STC MCU requires [Python 3](https://www.python.org/downloads/), and the Python 3 libraries `serial` and `tqdm`.
+Follow the instructions at [https://github.com/grigorig/stcgal#installation](https://github.com/grigorig/stcgal#installation) to install STCGAL. This programming tool for the STC MCU requires [Python 3](https://www.python.org/downloads/), and the Python 3 libraries `pyserial` and `tqdm`.
+
+- Go to https://pyhton.org and download Python; install it.
+- Open a Command prompt (run cmd.exe)
+- In the command prompt execute `pip install pyserial tqdm`
 
 Connect your USB-to-serial adapter to the RC-brake-lights controller as follows:
 
